@@ -18,7 +18,6 @@ public class Cliente {
 		private Pingpong a;
 		private int score1 = 0;
 		private int score2 = 0;
-		Image background;
 		
 		public Cliente()  {
 			try {
@@ -116,9 +115,13 @@ public class Cliente {
 					if (response.startsWith("UP ")) {
 						String player = response.substring(3);
 						a.moveUp(player);	
+						System.out.println(response);
+						System.out.println(player);
 					}else if (response.startsWith("DOWN ")) {
 						String player = response.substring(5);
-						a.moveDown(player);	
+						a.moveDown(player);
+						System.out.println(response);
+						System.out.println(player);
 					}else if (response.equals("GO")) {
 							Pingpong.message = "";
 							frame.repaint();
@@ -250,8 +253,6 @@ class Pingpong extends JPanel implements KeyListener {
 		return ball;
 	}
 
-	
-	
 	public void keyTyped(KeyEvent e) {
 	}
 
@@ -332,8 +333,8 @@ class Pingpong extends JPanel implements KeyListener {
 				py1=50;
 			
 			out.println("Paddle1 Move: " + py1);
-			
-		} else if(mark.equals("2")) {
+			System.out.println("Paddle1 Move: " + py1);
+		} else {
 			Toolkit.getDefaultToolkit().sync();
 			this.repaint();
 			py2=py2-50;
@@ -341,6 +342,7 @@ class Pingpong extends JPanel implements KeyListener {
 				py2=50;
 			
 			out.println("Paddle2 Move: " + py2);
+			System.out.println("Paddle2 Move: " + py2);
 		}
 	}
 	
@@ -353,7 +355,7 @@ class Pingpong extends JPanel implements KeyListener {
 				py1=370;
 			
 			out.println("Paddle1 Move: " + py1);
-		} else if(mark.equals("2")) {
+		} else {
 			Toolkit.getDefaultToolkit().sync();
 			this.repaint();
 			py2=py2+50;
